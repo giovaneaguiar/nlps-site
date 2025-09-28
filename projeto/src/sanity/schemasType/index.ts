@@ -1,5 +1,19 @@
-import {sobrePage, evento, ideia} from './schema'
+import {
+  imageHomePage,
+  homePage,
+  aLetra,
+  aInstituicao,
+  aLeitura,
+  oTexto  
+} from './schema'; 
 
 export const schema = {
-  types: [sobrePage, evento, ideia],
-}
+  types: [
+    imageHomePage,
+    homePage,
+    aLetra,
+    aInstituicao,
+    aLeitura,
+    oTexto,
+  ],
+};
