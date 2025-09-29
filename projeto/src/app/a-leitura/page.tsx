@@ -12,7 +12,7 @@ const diasSemanaMap: Record<string, string> = {
 };
 
 type GrupoEstudo = {
-  _id: string;
+  _key: string;
   diaSemana: string;
   horario: string;
   frequencia: string;
@@ -24,31 +24,47 @@ type GrupoEstudo = {
   ordem: number;
 };
 
-export default async function ALeitura() {
-  const grupos: GrupoEstudo[] = await getProgramacao();
+type ProgramacaoData = {
+  grupos: GrupoEstudo[];
+  imagemGrande?: {
+    asset: {
+      url: string;
+    };
+  };
+};
 
-  if (!grupos || grupos.length === 0) {
+export default async function ALeitura() {
+  const data: ProgramacaoData = await getProgramacao();
+
+  const grupos = data?.grupos || [];
+  const imagemUrl = data?.imagemGrande?.asset?.url || "https://cdn.sanity.io/images/d392wiv6/production/abc123-1200x400.jpg";
+
+  if (grupos.length === 0) {
     return (
       <div className="container mx-auto p-8">
         <h1 className="text-4xl font-bold mb-8 text-center">A Leitura</h1>
+        <img src={imagemUrl} alt="Imagem A Leitura" className="w-full max-h-[400px] object-cover mb-8 rounded" />
         <p>Programação ainda não cadastrada. Por favor, adicione grupos no Sanity.</p>
       </div>
     );
   }
 
-  // Agrupar por dia da semana
+  // Agrupa os grupos por dia da semana
   const gruposPorDia = grupos.reduce<Record<string, GrupoEstudo[]>>((acc, grupo) => {
     if (!acc[grupo.diaSemana]) acc[grupo.diaSemana] = [];
     acc[grupo.diaSemana].push(grupo);
     return acc;
   }, {});
 
-  // Ordenar dias pela ordem natural da semana
   const ordemDias = ['segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo'];
 
   return (
     <div className="container mx-auto p-8 max-w-4xl">
-      <h1 className="text-4xl font-bold mb-8 text-center">A Leitura</h1>
+      <h1 className="text-4xl font-bold mb-4 text-center">A Leitura</h1>
+
+      {/* Imagem grande abaixo do título */}
+      <img src={imagemUrl} alt="Imagem A Leitura" className="w-full max-h-[400px] object-cover mb-8 rounded" />
+
       <section>
         <h2 className="text-3xl font-semibold mb-6 border-b pb-2">OS TRABALHOS</h2>
 
@@ -60,7 +76,7 @@ export default async function ALeitura() {
             <article key={dia} className="mb-10">
               <h3 className="text-2xl font-semibold mb-4">{diasSemanaMap[dia]}</h3>
               {gruposDoDia.map((grupo) => (
-                <div key={grupo._id} className="mb-6 border p-4 rounded shadow-sm bg-white">
+                <div key={grupo._key} className="mb-6 border p-4 rounded shadow-sm bg-white">
                   <p className="font-semibold mb-1">
                     {grupo.horario} - {grupo.frequencia}
                   </p>
@@ -92,15 +108,6 @@ export default async function ALeitura() {
           Os grupos acontecem em sequência, nas segundas, quartas e sextas-feiras de cada mês, exclusivamente no formato virtual.
         </p>
       </section>
-
-      <div className="text-center mt-12">
-        <Link
-          href="/agenda"
-          className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors shadow-md"
-        >
-          Confira aqui a programação completa
-        </Link>
-      </div>
     </div>
   );
 }

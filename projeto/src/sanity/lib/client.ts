@@ -53,9 +53,9 @@ export async function getTextoData() {
 }
 
 export async function getProgramacao() {
-  // Busca todos os grupos de estudo ordenados por dia e ordem
-  return client.fetch(`
-    *[_type == "grupoEstudo"] | order(diaSemana asc, ordem asc) {
+  const query = `*[_type == "grupoEstudo"][0]{
+    grupos[]{
+      _key,
       _id,
       diaSemana,
       horario,
@@ -66,7 +66,16 @@ export async function getProgramacao() {
       formato,
       descricaoAdicional,
       ordem
+    },
+    imagemGrande{
+      asset->{
+        url
+      }
     }
-  `);
+  }`;
+
+  const data = await client.fetch(query);
+  return data;
 }
+
 

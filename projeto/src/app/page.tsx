@@ -26,13 +26,17 @@ export default async function Home() {
   const homeData = await getHomeData();
   const titulo = homeData?.titulo || "Núcleo de Leitura em Psicanálise";
 
-  const telefone = "(11) 99999-9999";
-  const email = "contato@nucleopsicanalise.com";
+  const telefone = "+55 (32) 3214-3434";
+  const email = " nucleolp@yahoo.com.br";
+  const endereco = "Rua Dom Viçoso, 95, sala 202";
+  const cep = "36026-390";
+  const cidade = "Juiz de Fora - MG";
+  const pais = "Brasil";
 
   return (
     <div className="container mx-auto p-8">
       <div className="text-center mb-8">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+        <h1 className="text-4xl md:text-5xl font-bold mb-6">
           {titulo}
         </h1>
 
@@ -48,7 +52,7 @@ export default async function Home() {
               unoptimized={isLocalFallback}
             />
           ) : (
-            <div className="w-full h-64 bg-gray-300 rounded-lg shadow-md flex items-center justify-center text-gray-500">
+            <div className="w-full h-64 bg-gray-300 rounded-lg shadow-md flex items-center justify-center">
               <p>Imagem não disponível – Adicione no Sanity para ativar</p>
             </div>
           )}
@@ -56,10 +60,10 @@ export default async function Home() {
       </div>
 
       <section className="max-w-2xl mx-auto text-center mb-12">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-700">
+        <h2 className="text-2xl md:text-3xl font-bold mb-6">
           As Leituras
         </h2>
-        <p className="text-lg text-gray-600 mb-6 leading-relaxed italic">
+        <p className="text-lg mb-6 leading-relaxed italic">
           *As leituras de estudo do Núcleo de Leitura em Psicanálise acontecem
           nas modalidades presencial, online ou híbrido, de acordo com a
           atividade proposta.
@@ -67,13 +71,22 @@ export default async function Home() {
       </section>
 
       <section className="max-w-2xl mx-auto text-center mb-12">
-        <p className="text-lg text-gray-600 mb-4 leading-relaxed">
+        <p className="text-lg mb-4 leading-relaxed">
           Para maiores informações utilize o contato telefônico abaixo ou
           envie-nos uma mensagem.
         </p>
-        <p className="text-lg text-gray-600 italic mb-8">
+        <p className="text-lg italic mb-8">
           Retornaremos assim que for possível.
         </p>
+
+        <div className="text-center">
+        <Link
+          href="/a-leitura"
+          className="bg-gray-800 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-900 transition-colors shadow-md"
+        >
+          Confira aqui a programação
+        </Link>
+        </div>
 
         <div className="bg-gray-50 p-6 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold mb-4 text-gray-800">Contato</h3>
@@ -83,17 +96,20 @@ export default async function Home() {
           <p className="text-base text-gray-700">
             <strong>Email:</strong> {email}
           </p>
+          <p className="text-base text-gray-700">
+           <strong>Endereço:</strong> {endereco} 
+          </p>
+          <p className="text-base text-gray-700">
+           <strong>CEP:</strong> {cep} 
+          </p>
+          <p className="text-base text-gray-700">
+           <strong></strong> {cidade} 
+          </p>
+          <p className="text-base text-gray-700">
+           <strong></strong> {pais} 
+          </p>
         </div>
       </section>
-
-      <div className="text-center">
-        <Link
-          href="/a-leitura"
-          className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors shadow-md"
-        >
-          Confira aqui a programação
-        </Link>
-      </div>
     </div>
   );
 }

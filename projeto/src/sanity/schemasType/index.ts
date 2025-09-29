@@ -1,9 +1,10 @@
+import grupoEstudo from './grupoEstudo';
+
 import {
   imageHomePage,
   homePage,
   aLetra,
   aInstituicao,
-  aLeitura,
   oTexto  
 } from './schema'; 
 
@@ -13,7 +14,7 @@ export const schema = {
     homePage,
     aLetra,
     aInstituicao,
-    aLeitura,
     oTexto,
+    grupoEstudo
   ],
 };

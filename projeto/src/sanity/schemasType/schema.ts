@@ -15,7 +15,6 @@ export const homePage = defineType({
   type: 'document',
   fields: [
     defineField({ name: 'titulo', title: 'Título', type: 'string' }),
-    // Opcionais: Para tornar home dinâmica (comente se preferir só título)
     defineField({
       name: 'conteudo',
       title: 'Conteúdo (As Leituras)',
@@ -89,28 +88,6 @@ export const aInstituicao = defineType({
   ],
 });
 
-export const aLeitura = defineType({
-  name: 'aLeitura',
-  title: 'A Leitura',
-  type: 'document',
-  fields: [
-    defineField({ name: 'titulo', title: 'Título da Seção', type: 'string', initialValue: 'A Leitura' }),
-    defineField({
-      name: 'conteudo',
-      title: 'Conteúdo',
-      type: 'array',
-      of: [{ type: 'block' }],
-      description: 'Rich text sobre o ato de ler na psicanálise (ex: ênfase em Lacan e Freud).',
-    }),
-    defineField({
-      name: 'imagem',
-      title: 'Imagem da Seção',
-      type: 'image',
-      options: { hotspot: true },
-    }),
-  ],
-});
-
 export const oTexto = defineType({
   name: 'oTexto',
   title: 'O Texto',
@@ -130,33 +107,5 @@ export const oTexto = defineType({
       type: 'image',
       options: { hotspot: true },
     }),
-  ],
-});
-
-export const evento = defineType({
-  name: 'evento',
-  title: 'Evento na Agenda',
-  type: 'document',
-  fields: [
-    defineField({ name: 'titulo', title: 'Título', type: 'string' }),
-    defineField({ name: 'data', title: 'Data', type: 'datetime' }),
-    defineField({ name: 'descricao', title: 'Descrição', type: 'text' }),
-    defineField({ name: 'local', title: 'Local', type: 'string' }),
-    // Opcionais: Para agenda mais rica (comente se não quiser)
-    defineField({ name: 'ministrante', title: 'Ministrante', type: 'string' }),
-    defineField({ name: 'imagem', title: 'Imagem', type: 'image' }),
-  ],
-});
-
-export const ideia = defineType({
-  name: 'ideia',
-  title: 'Ideia Enviada',
-  type: 'document',
-  fields: [
-    defineField({ name: 'nome', title: 'Nome', type: 'string' }),
-    defineField({ name: 'email', title: 'Email', type: 'string' }),
-    defineField({ name: 'conteudo', title: 'Ideia', type: 'text' }),
-    defineField({ name: 'aprovada', title: 'Aprovada?', type: 'boolean', initialValue: false }),
-    defineField({ name: 'imagem', title: 'Imagem Opcional', type: 'image' }),
   ],
 });

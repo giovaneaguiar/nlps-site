@@ -1,8 +1,7 @@
 export default function Header() {
   return (
-    <header className="bg-blue-600 text-white p-4">
-      <nav className="container mx-auto flex justify-between">
-        <h1 className="text-2xl font-bold">Núcleo de Leitura em Psicanálise</h1>
+    <header className="bg-gray-800 text-white p-4">
+      <nav className="container mx-auto flex justify-center">
         <ul className="flex space-x-4">
           <li><a href="/" className="hover:underline">Início</a></li>
           <li><a href="/a-letra" className="hover:underline">A Letra</a></li>

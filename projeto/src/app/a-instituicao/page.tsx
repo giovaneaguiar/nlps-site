@@ -5,6 +5,8 @@ import { PortableTextContent } from "@/lib/portableText";
 export default async function AInstituicao() {
   const data = await getInstituicaoData();
 
+    const imagemUrl = data?.imagem?.asset?.url || "https://cdn.sanity.io/images/seuProjectId/production/abc123-1200x400.jpg";
+
   if (!data) {
     return (
       <div className="container mx-auto p-8">
@@ -17,18 +19,8 @@ export default async function AInstituicao() {
   return (
     <div className="container mx-auto p-8">
       <h1 className="text-3xl font-bold mb-4">{data.titulo}</h1>
-      
-      {data.imagem && (
-        <div className="mx-auto mb-8 max-w-md">
-          <Image
-            src={urlFor(data.imagem).url() || "/images/placeholder.jpg"}
-            alt={data.titulo}
-            width={400}
-            height={300}
-            className="rounded-lg shadow-md w-full h-auto"
-          />
-        </div>
-      )}
+
+      <img src={imagemUrl} alt="Imagem A Instituição" className="w-full max-h-[400px] object-cover mb-8 rounded" />
 
       <PortableTextContent content={data.conteudo || []} />
     </div>
