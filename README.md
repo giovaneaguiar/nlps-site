@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Website do Núcleo de Leitura em Psicanálise
 
-## Getting Started
+Este é o repositório oficial do site público do Núcleo de Leitura em Psicanálise. O projeto foi desenvolvido para fornecer informações sobre a instituição, sua programação de estudos e formas de contato.
 
-First, run the development server:
+## ✨ Tecnologias Utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+O projeto foi construído com uma stack moderna, focada em performance e flexibilidade na gestão de conteúdo:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* **Framework:** [Next.js](https://nextjs.org/) (com App Router)
+* **Linguagem:** [TypeScript](https://www.typescriptlang.org/)
+* **Estilização:** [Tailwind CSS](https://tailwindcss.com/)
+* **CMS (Gestão de Conteúdo):** [Sanity.io](https://www.sanity.io/)
+* **Hospedagem:** [Vercel](https://vercel.com/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Como Executar o Projeto Localmente
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Siga os passos abaixo para configurar e executar o projeto no seu ambiente de desenvolvimento.
 
-## Learn More
+### Pré-requisitos
 
-To learn more about Next.js, take a look at the following resources:
+* [Node.js](https://nodejs.org/) (versão 18.18 ou superior)
+* [npm](https://www.npmjs.com/) ou outro gestor de pacotes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Instalação
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/giovaneaguiar/nlps-site.git](https://github.com/giovaneaguiar/nlps-site.git)
+    cd nlps-site
+    ```
 
-## Deploy on Vercel
+2.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3.  **Configure as Variáveis de Ambiente:**
+    * Crie um ficheiro chamado `.env.local` na raiz do projeto.
+    * Copie o conteúdo do exemplo abaixo para o seu ficheiro e preencha com as suas chaves do Sanity.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    **`.env.local`**
+    ```
+    SANITY_STUDIO_PROJECT_ID="SEU_PROJECT_ID_DO_SANITY"
+    SANITY_STUDIO_DATASET="SEU_DATASET_DO_SANITY" # (geralmente 'production')
+    ```
+    > Você pode encontrar o `Project ID` e o `Dataset` no seu painel em [manage.sanity.io](https://manage.sanity.io).
+
+4.  **Execute o servidor de desenvolvimento:**
+    ```bash
+    npm run dev
+    ```
+
+    * O site estará disponível em `http://localhost:3000`.
+    * O Sanity Studio (painel de conteúdo) estará disponível em `http://localhost:3000/nlps`.
