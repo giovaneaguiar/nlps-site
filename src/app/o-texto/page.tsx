@@ -9,7 +9,7 @@ export default async function OTexto() {
     return (
       <div className="container mx-auto p-8">
         <h1 className="text-3xl font-bold mb-4">O Texto</h1>
-        <p>Conteúdo em breve. Crie um documento 'oTexto' no Sanity para ativar!</p>
+        <p>Conteúdo em breve. Crie um documento &apos;oTexto&apos; no Sanity para ativar!</p>
       </div>
     );
   }

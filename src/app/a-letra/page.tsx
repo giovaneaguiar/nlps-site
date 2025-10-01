@@ -9,7 +9,7 @@ export default async function ALetra() {
     return (
       <div className="container mx-auto p-8">
         <h1 className="text-3xl font-bold mb-4">A Letra</h1>
-        <p>Conteúdo em breve. Crie um documento 'aLetra' no Sanity para ativar!</p>
+        <p>Conteúdo em breve. Crie um documento &apos;aLetra&apos; no Sanity para ativar!</p>
       </div>
     );
   }

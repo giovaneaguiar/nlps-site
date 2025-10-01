@@ -1,9 +1,24 @@
 import { PortableText } from '@portabletext/react';
 import { urlFor } from '../sanity/lib/image';
+import React from 'react';
+
+// Tipos para os componentes
+interface ImageValue {
+  alt?: string;
+  caption?: string;
+}
+
+interface LinkValue {
+  href: string;
+}
+
+interface BlockValue {
+  children: React.ReactNode;
+}
 
 const components = {
   types: {
-    image: ({ value }: any) => (
+    image: ({ value }: { value: ImageValue }) => (
       <figure className="my-4">
         <img 
           src={urlFor(value).url()}
@@ -21,9 +36,9 @@ const components = {
    
   },
   marks: {
-    strong: ({ children }: any) => <strong className="font-bold">{children}</strong>,
-    em: ({ children }: any) => <em className="italic">{children}</em>,
-    link: ({ value, children }: any) => (
+    strong: ({ children }: BlockValue) => <strong className="font-bold">{children}</strong>,
+    em: ({ children }: BlockValue) => <em className="italic">{children}</em>,
+    link: ({ value, children }: { value: LinkValue, children: React.ReactNode }) => (
       <a 
         href={value.href} 
         className="text-blue-600 underline hover:text-blue-800" 
@@ -35,16 +50,16 @@ const components = {
     ),
   },
   list: {
-    bullet: ({ children }: any) => <ul className="list-disc ml-6 my-2">{children}</ul>,
-    number: ({ children }: any) => <ol className="list-decimal ml-6 my-2">{children}</ol>,
+    bullet: ({ children }: BlockValue) => <ul className="list-disc ml-6 my-2">{children}</ul>,
+    number: ({ children }: BlockValue) => <ol className="list-decimal ml-6 my-2">{children}</ol>,
   },
   block: {
-    h1: ({ children }: any) => <h1 className="text-3xl font-bold my-4">{children}</h1>,
-    h2: ({ children }: any) => <h2 className="text-2xl font-semibold my-3">{children}</h2>,
- 
+    h1: ({ children }: BlockValue) => <h1 className="text-3xl font-bold my-4">{children}</h1>,
+    h2: ({ children }: BlockValue) => <h2 className="text-2xl font-semibold my-3">{children}</h2>,
   },
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function PortableTextContent({ content }: { content: any[] }) {
   return <PortableText value={content || []} components={components} />;
 }
