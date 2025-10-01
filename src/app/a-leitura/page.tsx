@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Image from "next/image"; 
 import { getProgramacao } from "@/sanity/lib/client";
 
 const diasSemanaMap: Record<string, string> = {
@@ -43,13 +43,12 @@ export default async function ALeitura() {
     return (
       <div className="container mx-auto p-8">
         <h1 className="text-4xl font-bold mb-8 text-center">A Leitura</h1>
-        <img src={imagemUrl} alt="Imagem A Leitura" className="w-full max-h-[400px] object-cover mb-8 rounded" />
+        <Image src={imagemUrl} alt="Imagem A Leitura" width={1200} height={400} className="w-full max-h-[400px] object-cover mb-8 rounded" unoptimized={imagemUrl.startsWith('https')} />
         <p>Programação ainda não cadastrada. Por favor, adicione grupos no Sanity.</p>
       </div>
     );
   }
 
-  // Agrupa os grupos por dia da semana
   const gruposPorDia = grupos.reduce<Record<string, GrupoEstudo[]>>((acc, grupo) => {
     if (!acc[grupo.diaSemana]) acc[grupo.diaSemana] = [];
     acc[grupo.diaSemana].push(grupo);
@@ -62,8 +61,7 @@ export default async function ALeitura() {
     <div className="container mx-auto p-8 max-w-4xl">
       <h1 className="text-4xl font-bold mb-4 text-center">A Leitura</h1>
 
-      {/* Imagem grande abaixo do título */}
-      <img src={imagemUrl} alt="Imagem A Leitura" className="w-full max-h-[400px] object-cover mb-8 rounded" />
+      <Image src={imagemUrl} alt="Imagem A Leitura" width={1200} height={400} className="w-full max-h-[400px] object-cover mb-8 rounded" unoptimized={imagemUrl.startsWith('https')}/>
 
       <section>
         <h2 className="text-3xl font-semibold mb-6 border-b pb-2">OS TRABALHOS</h2>

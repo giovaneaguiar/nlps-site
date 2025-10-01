@@ -1,5 +1,6 @@
 import { createClient } from 'next-sanity';
 import createImageUrlBuilder from '@sanity/image-url';
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 import { apiVersion, dataset, projectId } from '../env';
 
@@ -12,7 +13,8 @@ export const client = createClient({
 
 const builder = createImageUrlBuilder(client);
 
-export function urlFor(source: any) {
+// Adicione o tipo correto ao parâmetro 'source'
+export function urlFor(source: SanityImageSource) {
   return builder.image(source).width(800).fit('max');
 }
 
@@ -77,5 +79,3 @@ export async function getProgramacao() {
   const data = await client.fetch(query);
   return data;
 }
-
-
