@@ -76,7 +76,7 @@ export default async function ALeitura() {
             <article key={dia} className="mb-10">
               <h3 className="text-2xl font-semibold mb-4">{diasSemanaMap[dia]}</h3>
               {gruposDoDia.map((grupo) => (
-                <div key={grupo._key} className="mb-6 border p-4 rounded shadow-sm bg-white">
+                <div key={grupo._key} className="mb-6 border p-4 rounded shadow-sm bg-white text-gray-800">
                   <p className="font-semibold mb-1">
                     {grupo.horario} - {grupo.frequencia}
                   </p>

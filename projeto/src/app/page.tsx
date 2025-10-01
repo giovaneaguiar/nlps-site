@@ -79,7 +79,7 @@ export default async function Home() {
           Retornaremos assim que for possível.
         </p>
 
-        <div className="text-center">
+        <div className="text-center mb-8">
         <Link
           href="/a-leitura"
           className="bg-gray-800 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-900 transition-colors shadow-md"
